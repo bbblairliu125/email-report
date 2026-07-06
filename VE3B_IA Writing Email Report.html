@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VE3B Writing Email Report Exercise</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        }
+        .stage { display: none; }
+        .stage.active { display: block; animation: fadeIn 0.3s ease-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 針對手機優化的特大流暢輸入框 */
+        input[type="text"] {
+            border-bottom: 2px solid #cbd5e1;
+            background-color: #f8fafc;
+            padding: 6px 12px;
+            outline: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 1rem; /* 16px 防止 iOS 自動放大 */
+        }
+        @media (min-width: 640px) {
+            input[type="text"] { font-size: 1.125rem; } /* 放大至 18px */
+        }
+        input[type="text"]:focus {
+            background-color: #f0fdf4;
+            border-bottom: 2px solid #10b981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <header class="bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 text-white py-6 px-4 md:px-8 shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+            <span class="text-xs md:text-sm font-bold tracking-widest uppercase bg-white/20 px-3 py-1 rounded-full text-cyan-100">VTC Vocational English</span>
+            <h1 class="text-2xl md:text-3xl font-black tracking-tight mt-1" style="font-family: 'Space Grotesk', sans-serif;">VE3B Writing Email Report 📝</h1>
+        </div>
+        <div class="text-base md:text-lg bg-slate-900/40 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full font-bold shadow-inner" id="stage-badge">
+            ⚡ Progress: 1 / 6
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto max-w-3xl p-4 md:p-8 flex flex-col">
+        
+        <div class="w-full bg-white p-5 md:p-8 rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-100 flex flex-col justify-between min-h-[480px]">
+            
+            <div id="exercise-form">
+                <div id="stage-1" class="stage active">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-xs md:text-sm font-bold rounded-md">Step 1</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Understanding Unfavourable Situations</h2>
+                    </div>
+                    <p class="text-base text-slate-500 mb-6">Choose the opening that best fits, and fill in the recipient's name:</p>
+                    
+                    <div class="space-y-4">
+                        <label class="block p-5 border-2 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-slate-50/50 transition-all border-indigo-500 bg-indigo-50/20 shadow-sm">
+                            <input type="radio" name="p1_option" value="opt1" checked class="w-5 h-5 text-indigo-600 accent-indigo-600 mr-2">
+                            <span class="font-bold text-xs md:text-sm tracking-wider text-indigo-600 uppercase block mb-3">Option 1</span>
+                            <span class="text-slate-700 leading-relaxed text-base md:text-lg block">Dear <input type="text" id="p1_name1" placeholder="e.g. Mr. Chan" class="w-40 mx-1 text-center">,<br><br>Thank you for your email. I am sorry to learn that our customers are not satisfied with our services, and I have analysed the survey results. I am writing to give you a summary of the major feedback collected and outline the possible reasons behind the issues.</span>
+                        </label>
+
+                        <label class="block p-5 border border-slate-200 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-slate-50/50 transition-all">
+                            <input type="radio" name="p1_option" value="opt2" class="w-5 h-5 text-indigo-600 accent-indigo-600 mr-2">
+                            <span class="font-bold text-xs md:text-sm tracking-wider text-indigo-600 uppercase block mb-3">Option 2</span>
+                            <span class="text-slate-700 leading-relaxed text-base md:text-lg block">Dear <input type="text" id="p1_name2" placeholder="e.g. Mr. Chan" class="w-40 mx-1 text-center">,<br><br>Thank you for your email. I feel sorry about the dissatisfaction expressed by our customers regarding our services. After analysing the survey results, I would like to provide you with a summary of the major feedback received and explain the potential reasons behind these issues.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="stage-2" class="stage">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-xs md:text-sm font-bold rounded-md">Step 2</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Feedback (Refer to Preparatory Task)</h2>
+                    </div>
+                    <p class="text-base text-slate-500 mb-6">Describe figures, give possible reasons, and make suggestions.</p>
+                    
+                    <div class="space-y-5">
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">📊 1. Describing figures</span>
+                            <select id="p2_df" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="According to the survey, ">According to the survey...</option>
+                                <option value="After analyzing the results, ">After analyzing the results...</option>
+                                <option value="From the survey, ">From the survey...</option>
+                            </select>
+                            <input type="text" id="p2_df_input" placeholder="e.g., 70% of respondents complained about the wait time" class="w-full">
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">💡 2. Giving possible reasons</span>
+                            <select id="p2_gr" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="It is probable that ">It is probable that...</option>
+                                <option value="One possible reason is that ">One possible reason is that...</option>
+                                <option value="One potential explanation is that ">One potential explanation is that...</option>
+                                <option value="The issue may have arisen because ">The issue may have arisen because...</option>
+                            </select>
+                            <input type="text" id="p2_gr_input" placeholder="e.g., we are currently short-handed during peak hours" class="w-full">
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">🚀 3. Making suggestions</span>
+                            <select id="p2_ms" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="To solve this problem, It is beneficial for us to ">To solve this problem, It is beneficial for us to...</option>
+                                <option value="In view of this, we could ">In view of this, we could...</option>
+                                <option value="To deal with this problem, it might be a good idea to ">To deal with this problem, it might be a good idea to...</option>
+                                <option value="To tackle this issue, it is suggested that we ">To tackle this issue, it is suggested that we...</option>
+                            </select>
+                            <input type="text" id="p2_ms_input" placeholder="e.g., deploy part-time staff to handle the crowd" class="w-full">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="stage-3" class="stage">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-xs md:text-sm font-bold rounded-md">Step 3</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Feedback (Refer to Question Book)</h2>
+                    </div>
+                    <p class="text-base text-slate-500 mb-6">Continue with the second issue and provide two recommendations.</p>
+                    
+                    <div class="space-y-5">
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">📊 1. Describing figures</span>
+                            <select id="p3_df" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="In addition, ">In addition...</option>
+                                <option value="Furthermore, ">Furthermore...</option>
+                                <option value="Moreover, ">Contrastingly/Moreover...</option>
+                            </select>
+                            <input type="text" id="p3_df_input" placeholder="e.g., 65% of customers felt the app was lagging" class="w-full">
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">💡 2. Giving possible reasons</span>
+                            <select id="p3_gr" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="It is probable that ">It is probable that...</option>
+                                <option value="One possible reason is that ">One possible reason is that...</option>
+                                <option value="One potential explanation is that ">One potential explanation is that...</option>
+                                <option value="The issue may have arisen because ">The issue may have arisen because...</option>
+                            </select>
+                            <input type="text" id="p3_gr_input" placeholder="e.g., the server configuration requires a major update" class="w-full">
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">🚀 3. Making suggestion 1</span>
+                            <select id="p3_ms1" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="To solve this problem, It is beneficial for us to ">To solve this problem, It is beneficial for us to...</option>
+                                <option value="In view of this, we could ">In view of this, we could...</option>
+                                <option value="To deal with this problem, it might be a good idea to ">To deal with this problem, it might be a good idea to...</option>
+                                <option value="To tackle this issue, it is suggested that we ">To tackle this issue, it is suggested that we...</option>
+                            </select>
+                            <input type="text" id="p3_ms1_input" placeholder="e.g., upgrade our server hardware package immediately" class="w-full">
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">➕ 4. Making suggestion 2</span>
+                            <select id="p3_ms2" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="If possible, we should also ">If possible, we should also...</option>
+                                <option value="Besides, is it possible for us to ">Besides, is it possible for us to...?</option>
+                                <option value="Where possible, we could also ">Where possible, we could also...</option>
+                            </select>
+                            <input type="text" id="p3_ms2_input" placeholder="e.g., optimise the underlying system code" class="w-full">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="stage-4" class="stage">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-xs md:text-sm font-bold rounded-md">Step 4</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Suggestions from Respondents</h2>
+                    </div>
+                    <p class="text-base text-slate-500 mb-6">Evaluate and respond to the respondents' positive suggestions.</p>
+                    
+                    <div class="space-y-5">
+                        <div class="bg-indigo-50/50 p-5 rounded-xl border border-indigo-100 text-base md:text-lg text-slate-700 leading-relaxed shadow-inner">
+                            Apart from the feedback above, our respondents made some suggestions in the survey. 
+                            <input type="text" id="p4_input1" placeholder="e.g., 60%" class="w-24 text-center mx-1 font-semibold"> 
+                            <strong>of the respondents</strong> expressed the need for 
+                            <input type="text" id="p4_input2" placeholder="e.g., more customer service counters" class="w-full sm:w-auto mt-2 sm:mt-0 text-center mx-1 font-semibold">.
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">🧐 Evaluating suggestions</span>
+                            <select id="p4_es" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="In my opinion, this is a ">In my opinion, this is a...</option>
+                                <option value="I believe that this is a ">I believe that this is a...</option>
+                                <option value="I think this is a ">I think this is a...</option>
+                            </select>
+                            <div class="flex flex-col gap-3">
+                                <input type="text" id="p4_es_adj" placeholder="Evaluation adjective (e.g., viable solution)" class="w-full">
+                                <div class="text-xs font-bold text-slate-400 uppercase text-center py-0.5">, which can</div>
+                                <input type="text" id="p4_es_benefit" placeholder="Benefit (e.g., ease the queue during peak slots)" class="w-full">
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">🎯 Responding to suggestions</span>
+                            <select id="p4_rs" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="In response, we could ">In response, we could... to...</option>
+                                <option value="In response to the suggestion, it is recommended that we ">In response to the suggestion, it is recommended that we... to...</option>
+                            </select>
+                            <div class="flex flex-col gap-3">
+                                <input type="text" id="p4_rs_action" placeholder="Action (e.g., open two more counter lanes)" class="w-full">
+                                <input type="text" id="p4_rs_purpose" placeholder="Purpose (e.g., reduce customer complaints)" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="stage-5" class="stage">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-xs md:text-sm font-bold rounded-md">Step 5</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Suggestions & Follow-up Actions</h2>
+                    </div>
+                    <p class="text-base text-slate-500 mb-6">Address the final suggestion and offer your action plan.</p>
+                    
+                    <div class="space-y-5">
+                        <div class="bg-indigo-50/50 p-5 rounded-xl border border-indigo-100 text-base md:text-lg text-slate-700 leading-relaxed shadow-inner">
+                            Last but not least, <input type="text" id="p5_input1" placeholder="e.g., A quarter" class="w-32 text-center mx-1 font-semibold"> of the respondents suggested there be <input type="text" id="p5_input2" placeholder="e.g., an e-ticketing kiosk" class="w-full sm:w-auto mt-2 sm:mt-0 text-center mx-1 font-semibold">.
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">🎯 Responding to suggestions</span>
+                            <select id="p5_rs" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="In this regard, perhaps we could ">In this regard, perhaps we could... to...</option>
+                                <option value="In response to the suggestion, we may ">In response to the suggestion, we may... to...</option>
+                            </select>
+                            <div class="flex flex-col gap-3">
+                                <input type="text" id="p5_rs_action" placeholder="Action (e.g., acquire quotes from tech vendors)" class="w-full">
+                                <input type="text" id="p5_rs_purpose" placeholder="Purpose (e.g., evaluate our budget)" class="w-full">
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 md:p-5 rounded-xl border border-slate-200">
+                            <span class="block font-semibold text-sm text-slate-500 uppercase tracking-wider mb-2">⚡ Offering follow-up action</span>
+                            <select id="p5_fa" class="w-full p-3 bg-white border border-slate-200 rounded-lg text-base md:text-lg shadow-sm focus:border-indigo-500 focus:outline-none mb-3 font-medium">
+                                <option value="I could ">I could... to...</option>
+                                <option value="I am happy to ">I am happy to... to...</option>
+                                <option value="Would you like me to ">Would you like me to... to...?</option>
+                            </select>
+                            <div class="flex flex-col gap-3">
+                                <input type="text" id="p5_fa_action" placeholder="Your Action (e.g., draft a preliminary plan)" class="w-full">
+                                <input type="text" id="p5_fa_purpose" placeholder="Expected Outcome (e.g., discuss in the next meeting)" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="stage-6" class="stage">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-xs md:text-sm font-bold rounded-md">Step 6</span>
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900">Professional Closing</h2>
+                    </div>
+                    <p class="text-base text-slate-500 mb-6">Select a sign-off option and sign your name:</p>
+                    
+                    <div class="space-y-4">
+                        <label class="block p-5 border-2 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-slate-50/50 transition-all border-indigo-500 bg-indigo-50/20 shadow-sm">
+                            <input type="radio" name="p6_option" value="opt1" checked class="w-5 h-5 text-indigo-600 accent-indigo-600 mr-2">
+                            <span class="font-bold text-xs md:text-sm tracking-wider text-indigo-600 uppercase block mb-2">Option 1</span>
+                            <span class="text-slate-700 text-base md:text-lg leading-relaxed block">I hope that the above information is useful. Please do let me know if I could be of further help.<br><br>Regards,<br><input type="text" id="p6_name1" placeholder="Your Full Name" class="w-56 mt-2 font-semibold"></span>
+                        </label>
+
+                        <label class="block p-5 border border-slate-200 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-slate-50/50 transition-all">
+                            <input type="radio" name="p6_option" value="opt2" class="w-5 h-5 text-indigo-600 accent-indigo-600 mr-2">
+                            <span class="font-bold text-xs md:text-sm tracking-wider text-indigo-600 uppercase block mb-2">Option 2</span>
+                            <span class="text-slate-700 text-base md:text-lg leading-relaxed block">I hope the information above is useful. Please feel free to let me know if further information is needed.<br><br>Regards,<br><input type="text" id="p6_name2" placeholder="Your Full Name" class="w-56 mt-2 font-semibold"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mt-8 pt-5 border-t border-slate-100">
+                <button id="prev-btn" onclick="changeStage(-1)" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-semibold text-base transition-all disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+                    ← Back
+                </button>
+                <button id="next-btn" onclick="changeStage(1)" class="px-8 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white rounded-xl font-bold text-base transition-all shadow-md shadow-indigo-200">
+                    Next Step →
+                </button>
+            </div>
+        </div>
+
+        <div id="final-report-section" class="w-full bg-slate-900 text-slate-100 p-6 md:p-8 rounded-2xl shadow-xl mt-8 border border-slate-800 hidden animate-fadeIn">
+            <div class="flex justify-between items-center mb-5 pb-3 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                    <h3 class="text-sm font-bold tracking-widest text-slate-400 uppercase font-mono ml-2">Your Generated Email Report 📧</h3>
+                </div>
+                <span class="text-xs bg-emerald-500 text-slate-950 px-2.5 py-1 rounded-md font-mono font-bold">Completed</span>
+            </div>
+            
+            <div id="email-preview-content" class="text-lg md:text-xl text-slate-100 font-normal leading-relaxed whitespace-pre-wrap tracking-normal font-mono bg-slate-950 p-5 rounded-xl border border-slate-800 overflow-x-auto selection:bg-indigo-500">
+                </div>
+
+            <div class="mt-6">
+                <button onclick="copyToClipboard()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white py-4 px-4 rounded-xl font-bold text-lg transition-all flex justify-center items-center gap-2 shadow-lg shadow-emerald-900/20">
+                    📋 Copy Full Email Report
+                </button>
+                <p id="copy-status" class="text-center text-sm font-bold text-emerald-400 mt-3 hidden">✨ Copied to clipboard! Ready to paste into your assignment.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 text-center py-5 text-sm font-medium text-slate-400 mt-auto">
+        &copy; 2026 VTC Language Centre. Tailored for Professional Learning Experience.
+    </footer>
+
+    <script>
+        let currentStage = 1;
+        const totalStages = 6;
+
+        // 清理末尾標點，防止重複句號的輔助函式
+        function sanitizeInput(str) {
+            return str.trim().replace(/\.+$/, "");
+        }
+
+        document.querySelectorAll('input[name="p1_option"]').forEach(elem => {
+            elem.addEventListener('change', function() {
+                document.querySelectorAll('#stage-1 label').forEach(l => l.className = 'block p-5 border border-slate-200 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-slate-50/50 transition-all');
+                this.parentElement.className = 'block p-5 border-2 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-slate-50/50 transition-all border-indigo-500 bg-indigo-50/20 shadow-sm';
+            });
+        });
+
+        document.querySelectorAll('input[name="p6_option"]').forEach(elem => {
+            elem.addEventListener('change', function() {
+                document.querySelectorAll('#stage-6 label').forEach(l => l.className = 'block p-5 border border-slate-200 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-slate-50/50 transition-all');
+                this.parentElement.className = 'block p-5 border-2 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-slate-50/50 transition-all border-indigo-500 bg-indigo-50/20 shadow-sm';
+            });
+        });
+
+        function changeStage(direction) {
+            document.getElementById(`stage-${currentStage}`).classList.remove('active');
+            currentStage += direction;
+            if (currentStage < 1) currentStage = 1;
+            if (currentStage > totalStages) currentStage = totalStages;
+
+            document.getElementById(`stage-${currentStage}`).classList.add('active');
+            document.getElementById('prev-btn').disabled = (currentStage === 1);
+            document.getElementById('stage-badge').innerText = `⚡ Progress: ${currentStage} / ${totalStages}`;
+
+            const nextBtn = document.getElementById('next-btn');
+            if (currentStage === totalStages) {
+                nextBtn.innerText = 'Review Report ✨';
+                nextBtn.classList.replace('from-indigo-600', 'from-purple-600');
+                nextBtn.classList.replace('to-violet-600', 'to-pink-600');
+            } else {
+                nextBtn.innerText = 'Next Step →';
+                nextBtn.classList.replace('from-purple-600', 'from-indigo-600');
+                nextBtn.classList.replace('to-pink-600', 'to-violet-600');
+            }
+
+            if (direction === 1 && currentStage === totalStages && nextBtn.dataset.finished === "true") {
+                generateFinalReport();
+            }
+
+            if (currentStage === totalStages) {
+                nextBtn.dataset.finished = "true";
+            } else {
+                nextBtn.dataset.finished = "false";
+                document.getElementById('final-report-section').classList.add('hidden');
+            }
+        }
+
+        function generateFinalReport() {
+            let emailText = "";
+
+            // ---- Paragraph 1 ----
+            const p1Opt = document.querySelector('input[name="p1_option"]:checked').value;
+            if (p1Opt === 'opt1') {
+                const name = document.getElementById('p1_name1').value.trim() || "________";
+                emailText += `Dear ${name},\n\nThank you for your email. I am sorry to learn that our customers are not satisfied with our services, and I have analysed the survey results. I am writing to give you a summary of the major feedback collected and outline the possible reasons behind the issues.\n\n`;
+            } else {
+                const name = document.getElementById('p1_name2').value.trim() || "________";
+                emailText += `Dear ${name},\n\nThank you for your email. I feel sorry about the dissatisfaction expressed by our customers regarding our services. After analysing the survey results, I would like to provide you with a summary of the major feedback received and explain the potential reasons behind these issues.\n\n`;
+            }
+
+            // ---- Paragraph 2 (describing the figure 後加 full stop) ----
+            const p2_df = document.getElementById('p2_df').value + sanitizeInput(document.getElementById('p2_df_input').value || "____________________________________") + ".";
+            const p2_gr = " " + document.getElementById('p2_gr').value + sanitizeInput(document.getElementById('p2_gr_input').value || "____________________________________");
+            const p2_ms = " " + document.getElementById('p2_ms').value + sanitizeInput(document.getElementById('p2_ms_input').value || "____________________________________");
+            emailText += p2_df + p2_gr + p2_ms + ".\n\n";
+
+            // ---- Paragraph 3 (describing figure, possible reason, solution 1 後各加 full stop) ----
+            const p3_df = document.getElementById('p3_df').value + sanitizeInput(document.getElementById('p3_df_input').value || "____________________________________") + ".";
+            const p3_gr = " " + document.getElementById('p3_gr').value + sanitizeInput(document.getElementById('p3_gr_input').value || "____________________________________") + ".";
+            const p3_ms1 = " " + document.getElementById('p3_ms1').value + sanitizeInput(document.getElementById('p3_ms1_input').value || "____________________________________") + ".";
+            
+            const p3_ms2_sel = document.getElementById('p3_ms2').value;
+            let p3_ms2_val = sanitizeInput(document.getElementById('p3_ms2_input').value || "____________________________________");
+            let p3_last_sentence = "";
+            if(p3_ms2_sel.includes('?')) {
+                p3_last_sentence = p3_ms2_sel.replace('?', p3_ms2_val + '?');
+            } else {
+                p3_last_sentence = p3_ms2_sel + p3_ms2_val + ".";
+            }
+            emailText += p3_df + p3_gr + p3_ms1 + " " + p3_last_sentence + "\n\n";
+
+            // ---- Paragraph 4 (evaluating the suggestion 後加 full stop) ----
+            const p4_i1 = sanitizeInput(document.getElementById('p4_input1').value || "__________");
+            const p4_i2 = sanitizeInput(document.getElementById('p4_input2').value || "____________________");
+            const p4_base = `Apart from the feedback above, our respondents made some suggestions in the survey. ${p4_i1} of the respondents expressed the need for ${p4_i2}.`;
+            const p4_es = " " + document.getElementById('p4_es').value + sanitizeInput(document.getElementById('p4_es_adj').value || "____________") + ", which can " + sanitizeInput(document.getElementById('p4_es_benefit').value || "____________________") + ".";
+            const p4_rs = " " + document.getElementById('p4_rs').value + sanitizeInput(document.getElementById('p4_rs_action').value || "____________________") + " to " + sanitizeInput(document.getElementById('p4_rs_purpose').value || "____________________");
+            emailText += p4_base + p4_es + p4_rs + ".\n\n";
+
+            // ---- Paragraph 5 (responding to the suggestion 後加 full stop) ----
+            const p5_i1 = sanitizeInput(document.getElementById('p5_input1').value || "_____________");
+            const p5_i2 = sanitizeInput(document.getElementById('p5_input2').value || "____________________");
+            const p5_base = `Last but not least, ${p5_i1} of the respondents suggested there be ${p5_i2}.`;
+            const p5_rs = " " + document.getElementById('p5_rs').value + sanitizeInput(document.getElementById('p5_rs_action').value || "____________________") + " to " + sanitizeInput(document.getElementById('p5_rs_purpose').value || "____________________") + ".";
+            
+            const p5_fa_sel = document.getElementById('p5_fa').value;
+            let p5_fa_body = sanitizeInput(document.getElementById('p5_fa_action').value || "____________________") + " to " + sanitizeInput(document.getElementById('p5_fa_purpose').value || "____________________");
+            let p5_last_sentence = "";
+            if(p5_fa_sel.includes('?')) {
+                p5_last_sentence = p5_fa_sel.replace('?', p5_fa_body + '?');
+            } else {
+                p5_last_sentence = p5_fa_sel + p5_fa_body + ".";
+            }
+            emailText += p5_base + p5_rs + " " + p5_last_sentence + "\n\n";
+
+            // ---- Paragraph 6 ----
+            const p6Opt = document.querySelector('input[name="p6_option"]:checked').value;
+            if (p6Opt === 'opt1') {
+                const name = document.getElementById('p6_name1').value.trim() || "___________";
+                emailText += `I hope that the above information is useful. Please do let me know if I could be of further help.\n\nRegards,\n${name}`;
+            } else {
+                const name = document.getElementById('p6_name2').value.trim() || "___________";
+                emailText += `I hope the information above is useful. Please feel free to let me know if further information is needed.\n\nRegards,\n${name}`;
+            }
+
+            document.getElementById('email-preview-content').innerText = emailText;
+            document.getElementById('final-report-section').classList.remove('hidden');
+            document.getElementById('final-report-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyToClipboard() {
+            const textToCopy = document.getElementById('email-preview-content').innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const status = document.getElementById('copy-status');
+                status.classList.remove('hidden');
+                setTimeout(() => { status.classList.add('hidden'); }, 4000);
+            });
+        }
+    </script>
+</body>
+</html>
